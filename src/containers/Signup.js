@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(0, 2.5),
 		position: 'relative',
 		left:'50%',
-		transform:'translate(-50%,50%)'
+		transform:'translate(-50%,20%)'
 	},
 	input: {
 		margin: theme.spacing(2.5, 0),

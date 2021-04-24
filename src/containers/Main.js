@@ -4,9 +4,7 @@ import { Route, Switch, withRouter } from 'react-router'
 import { setUser } from '../store/actions/auth'
 import Homepage from './homepage/Homepage'
 import Signup from './Signup'
-import { CSSTransition } from 'react-transition-group'
 import '../styles.css'
-import { Container } from '@material-ui/core'
 const Main = ({ history }) => {
 	const { currentUser } = useSelector(state => state)
 	const dispatch = useDispatch()
