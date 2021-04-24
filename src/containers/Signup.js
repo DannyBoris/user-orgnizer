@@ -48,9 +48,10 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		justifyContent: 'space-evenly',
 		padding: theme.spacing(0, 2.5),
-		position: 'relative',
+		position: 'absolute',
 		left:'50%',
-		transform:'translate(-50%,20%)'
+		top:'50%',
+		transform:'translate(-50%,-50%)'
 	},
 	input: {
 		margin: theme.spacing(2.5, 0),
