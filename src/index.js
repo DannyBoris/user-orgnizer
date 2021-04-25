@@ -8,17 +8,20 @@ import { ThemeProvider } from '@material-ui/core'
 import theme from './theme'
 import { Provider } from 'react-redux'
 import { configureStore } from './store'
+import { SnackbarProvider } from 'notistack'
 const store = configureStore()
 
 ReactDOM.render(
 	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<Provider store={store}>
-				<Router>
-					<App />
-				</Router>
-			</Provider>
-		</ThemeProvider>
+		<SnackbarProvider maxSnack={1}>
+			<ThemeProvider theme={theme}>
+				<Provider store={store}>
+					<Router>
+						<App />
+					</Router>
+				</Provider>
+			</ThemeProvider>
+		</SnackbarProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 )

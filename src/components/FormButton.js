@@ -1,6 +1,5 @@
 import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
-import Loader from 'react-loader-spinner'
 import CutBorderContainer from '../hoc/CutBorderContainer'
 import theme from '../theme'
 

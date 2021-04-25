@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 }))
-const AddUserForm = ({ roles, open, setOpen, closeErrorHandler, storeError }) => {
+const AddUserForm = ({ roles, open, setOpen, closeErrorHandler, storeError, handleAdd }) => {
 	const classes = useStyles()
 	const dispatch = useDispatch()
 	const { users, error } = useSelector(state => state)
@@ -94,7 +94,7 @@ const AddUserForm = ({ roles, open, setOpen, closeErrorHandler, storeError }) =>
 		const uid = generateUserId()
 		const { birthdate, photo } = otherUserData
 		data = { ...data, role: data.role.replaceAll(' ', 'SPACE'), photo, birthdate, id: uid } //role cant have spaces
-		dispatch(addUser(data))
+		handleAdd(data)
 	}
 
 	const handlePhotoUpload = e => {

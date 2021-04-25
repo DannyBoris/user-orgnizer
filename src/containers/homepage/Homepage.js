@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers, removeUser } from '../../store/actions/users'
+import { addUser, getUsers, removeUser } from '../../store/actions/users'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import UserList from './components/UserList'
@@ -10,8 +10,10 @@ import { logout } from '../../store/actions/auth'
 import { apiCall, backendlessConfigApi } from '../../services/api'
 import { addError } from '../../store/actions/error'
 import AddUserForm from './containers/AddUserForm'
+import { useSnackbar } from 'notistack'
 
 const Homepage = () => {
+	const { enqueueSnackbar } = useSnackbar()
 	const [term, setTerm] = useState('')
 	const [loading, setLoading] = useState(true)
 	const [roles, setRoles] = useState([])
@@ -35,6 +37,18 @@ const Homepage = () => {
 
 	const handleDelete = id => {
 		dispatch(removeUser(id))
+		enqueueSnackbar('User removed succesfully', {
+			variant: 'success',
+			anchorOrigin: { vertical: 'top', horizontal: 'center' },
+		})
+	}
+
+	const handleAdd = data => {
+		dispatch(addUser(data))
+		enqueueSnackbar('User added succesfully', {
+			variant: 'success',
+			anchorOrigin: { vertical: 'top', horizontal: 'center' },
+		})
 	}
 
 	const getUsersPerPage = nextPage => {
@@ -107,6 +121,7 @@ const Homepage = () => {
 				loading={loading}
 				currentUser={currentUser}
 				handleDelete={handleDelete}
+				handleAdd={handleAdd}
 				users={usersForRendering}
 			/>
 			<AddUserForm
